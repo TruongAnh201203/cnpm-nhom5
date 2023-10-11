@@ -20,6 +20,7 @@ Route::get('shop/singleProduct/{idProduct}', 'ShopController@singleProduct')->na
 Route::get('shop/List/{brand}', 'ShopController@listAll')->name('shop.listAll');
 Route::get('shop/Search/List', 'ShopController@search')->name('shop.search');
 Route::get('shop/Contact', 'ShopController@contact')->name('shop.contact');
+Route::post('shop/Filter/List', 'ShopController@listFilter');
 
 Route::get('Login', 'UserController@getLogin')->name('get.login');
 Route::get('Register', 'UserController@getRegister')->name('get.register');
@@ -56,6 +57,9 @@ Route::middleware(['middleware' => 'auth'])->group( function () {
         Route::get('Admin/Brand/edit/{brand}','Admin\BrandController@edit')->name('admin.brand.edit');
         Route::put('Admin/Brand/update/{brand}', 'Admin\BrandController@update')->name('admin.brand.update');
         Route::delete('Admin/Brand/delete/{brand}', 'Admin\BrandController@destroy')->name('admin.brand.delete');
+
+        Route::get('Product/Search', 'Admin\ProductController@search')->name('admin.search');
+        Route::get('Product/index/1', 'Admin\ProductController@sol')->name('sol');
     });
 
     Route::middleware(['user'])->group(function () {

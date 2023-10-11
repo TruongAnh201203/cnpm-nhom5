@@ -23,7 +23,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="contact_message">
                     <h3>Gửi câu hỏi</h3>
-                    <form id="contact-form" method="POST" action="assets/mail.php">
+                    <form id="contact-form" action="#">
                         <div class="row">
                             <div class="col-lg-6">
                                 <input name="email" placeholder="Email *" type="email" value="{{Auth::user()->email}}">

@@ -22,9 +22,6 @@ class ProductController extends Controller
         return view('Admin.products.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $brands=Brand::OrderBy('brand')->get();
@@ -108,5 +105,17 @@ class ProductController extends Controller
             return redirect()->back()->with('success','Xóa thành công');
         }
         return redirect()->back()->with('error','Xóa thất bại');
+    }
+
+    public function search(Request $request){
+        $search = $request['search'];
+        $products = Product::where('nameProduct','LIKE', "%{$search}%")->paginate(10);
+        return view('Admin.products.index', compact('products'));
+    }
+
+    public function sol(Request $request)
+    {
+        $products = Product::orderBy('quantityProduct')->paginate(10);
+        return view('Admin.products.index', compact('products'));
     }
 }

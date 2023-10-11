@@ -146,7 +146,6 @@
                 method: "POST",
                 data: $('#addUserForm').serialize(),
                 success: function(result) {
-                    // console.log();
                     var i = 0,
                         sum = 0;
                     result.forEach(element => {

@@ -32,15 +32,45 @@ class ShopController extends Controller
     public function listAll($brand)
     {
         if ($brand == "All") {
-            $products = Product::OrderBy('created_at','DESC')->paginate(9);
+            $products = Product::All();
         }
         else{
-            $products = Product::where('brand',$brand)->OrderBy('created_at','DESC')->paginate(9);
+            $products = Product::where('brand',$brand)->get();
         }
+        $price['max'] = 0;
+        foreach ($products->all() as $value) {
+            if ($value->priceProduct > $price['max']) {
+                $price['max']=$value->priceProduct;
+            }
+        }
+        $price['min'] = $price['max'];
+        foreach ($products->all() as $value) {
+            if ($value->priceProduct < $price['min']) {
+                $price['min']=$value->priceProduct;
+            }
+        }
+
+        if ($brand == "All") {
+            $products = Product::orderBy('updated_at', 'DESC')->paginate(9);
+        }
+        else{
+            $products = Product::where('brand',$brand)->orderBy('updated_at', 'DESC')->paginate(9);
+        }
+
         $categories = Brand::OrderBy('brand')->limit(5)->get();
         $specials =Product::inRandomOrder()->limit(2)->get();
         $brands = Brand::OrderBy('brand')->get();
-        return view('Shop.list', compact('products', 'brands', 'brand', 'categories', 'specials'));
+        return view('Shop.list', compact('products', 'brands', 'brand', 'categories', 'specials', 'price'));
+    }
+
+    public function listFilter(Request $request)
+    {
+        $price = $request->only('to','from');
+        $products = Product::where([
+            ['priceProduct', '>=', $price['from']],
+            ['priceProduct', '<=', $price['to']],
+        ])->orderBy('updated_at', 'DESC')->paginate(9);
+        return view('Shop.filter', compact('products'));
     }
 
     public function search(Request $request)

@@ -45,6 +45,21 @@
         padding: 0 0 17px 0;
         text-align: end;
     }
+
+    .loc{
+        color: #fff;
+        font-size: 13px;
+        text-transform: capitalize;
+        margin: 15px 0 0;
+        border: none;
+        background: #00bba6;
+        height: 30px;
+        cursor: pointer;
+        -webkit-transition: .3s;
+        transition: .3s;
+        padding: 0 17px;
+    }
+
 </style>
 <!-- all css here -->
 <link rel="stylesheet" href="{{asset('assets\css\bootstrap.min.css')}}">

@@ -15,12 +15,6 @@ use App\Models\Order;
 
 class UserController extends Controller
 {
-    public function getLogin()
-    {
-        $brands = Brand::OrderBy('brand')->get();
-        return view('login', compact('brands'));
-    }
-
     public function getRegister()
     {
         $brands = Brand::OrderBy('brand')->get();
@@ -33,6 +27,12 @@ class UserController extends Controller
         $user['password']=Hash::make($request->password);
         User::create($user);
         return redirect()->route('get.login');
+    }
+
+    public function getLogin()
+    {
+        $brands = Brand::OrderBy('brand')->get();
+        return view('login', compact('brands'));
     }
 
     public function postLogin(LoginRequest $request){
