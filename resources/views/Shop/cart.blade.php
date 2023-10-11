@@ -111,7 +111,6 @@
                                         style="border: 0" value="{{ number_format(sumPrice()) }}VND">
                                 </div>
                                 <div class="checkout_btn">
-                                    {{-- <a href="#">Tiến hành thanh toán</a> --}}
                                     <button type="submit" style="background: #00bba6;font-size: 14px;">Tiến hành thanh
                                         toán</button>
                                 </div>
