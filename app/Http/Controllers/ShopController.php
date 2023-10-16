@@ -73,6 +73,14 @@ class ShopController extends Controller
         return view('Shop.filter', compact('products'));
     }
 
+    public function modal(Request $request)
+    {
+        $product = Product::where('idProduct',$request->id)->first();
+        $product['sizeProduct'] = explode(',',$product['sizeProduct']);
+        // dd($product);
+        return view('Shop.modal', compact('product'));
+    }
+
     public function search(Request $request)
     {
         $brand = $request['search'];

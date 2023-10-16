@@ -60,6 +60,43 @@
         padding: 0 17px;
     }
 
+    .addModal{
+        background: none;
+        border: 1px solid #444;
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        height: 38px;
+        line-height: 18px;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        background: #444;
+        color: #fff;
+        border-radius: 5px;
+        -webkit-transition: .3s;
+        transition: .3s;
+        cursor: pointer;
+    }
+
+    .solModal{
+        width: 80px;
+        border: 1px solid #ddd;
+        background: none;
+        padding: 0 17px;
+        font-weight: 700;
+        border-radius: 5px;
+        height: 40px;
+    }
+
+    .addModal:hover{
+        background: #00bba6;
+        color: #fff;
+        border-color: #00bba6;
+    }
+
+
+    
+
 </style>
 <!-- all css here -->
 <link rel="stylesheet" href="{{asset('assets\css\bootstrap.min.css')}}">

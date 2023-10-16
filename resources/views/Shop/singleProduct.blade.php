@@ -67,7 +67,6 @@
 
                     <div class="content_price mb-15">
                         <span>{{ number_format($product->priceProduct) }} đ</span>
-                        {{-- <span class="old-price">$130.00</span> --}}
                     </div>
                     <form action="{{route('user.addCart')}}">
                         @csrf

@@ -21,6 +21,7 @@ Route::get('shop/List/{brand}', 'ShopController@listAll')->name('shop.listAll');
 Route::get('shop/Search/List', 'ShopController@search')->name('shop.search');
 Route::get('shop/Contact', 'ShopController@contact')->name('shop.contact');
 Route::post('shop/Filter/List', 'ShopController@listFilter');
+Route::get('shop/Modal', 'ShopController@modal');
 
 Route::get('Login', 'UserController@getLogin')->name('get.login');
 Route::get('Register', 'UserController@getRegister')->name('get.register');

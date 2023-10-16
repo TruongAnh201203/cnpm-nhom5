@@ -55,14 +55,14 @@
                 <!--price slider end-->
 
                 <!--newsletter block start-->
-                <div class="sidebar_widget newsletter mb-30">
+                <div class="sidebar_widget newsletter mb-35">
                     <div class="block_title">
-                        <h3>newsletter</h3>
+                        <h3>Liên hệ</h3>
                     </div>
                     <form action="#">
-                        <p>Sign up for your newsletter</p>
-                        <input placeholder="Your email address" type="text">
-                        <button type="submit">Subscribe</button>
+                        <p>Chúng tôi sẽ liên hệ với bạn</p>
+                        <input placeholder="Email của bạn" type="text">
+                        <button type="submit" style="border-radius: 10px">Gửi</button>
                     </form>
                 </div>
                 <!--newsletter block end-->
