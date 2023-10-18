@@ -42,8 +42,6 @@ Route::middleware(['middleware' => 'auth'])->group( function () {
         Route::get('Admin/Oders', 'OrderController@listOrderAdmin')->name('admin.orders');
         Route::get('Admin/Oders/{order}', 'OrderController@orderSingleAdmin')->name('admin.orderSingleAdmin');
         Route::put('Admin/Oders/Comfirm/{order}', 'OrderController@comfirmOrder')->name('admin.comfirmOrder');
-        Route::put('Admin/Oders/Complete/{order}', 'OrderController@completeOrder')->name('admin.completeOrder');
-        Route::put('Admin/Oders/Delete/{order}', 'OrderController@deleteOrder')->name('admin.deleteOrder');
 
         Route::get('Admin/Product/index', 'Admin\ProductController@index')->name('admin.product.index');
         Route::get('Admin/Product/create', 'Admin\ProductController@create')->name('admin.product.create');
@@ -73,6 +71,9 @@ Route::middleware(['middleware' => 'auth'])->group( function () {
         Route::get('shop/Cart', 'ShopController@cart')->name('shop.cart');
         Route::get('shop/Cart/delete/{i}', 'ShopController@deleteCart')->name('shop.deleteCart');
         Route::post('shop/Cart/update/ddddd', 'ShopController@updateCartPost');
+
+        Route::put('Admin/Oders/Complete/{order}', 'OrderController@completeOrder')->name('admin.completeOrder');
+        Route::put('Admin/Oders/Delete/{order}', 'OrderController@deleteOrder')->name('admin.deleteOrder');
     });
 
     Route::post('logout', 'UserController@logout')->name('logout');

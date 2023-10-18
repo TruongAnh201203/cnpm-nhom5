@@ -37,7 +37,14 @@ class UserController extends Controller
 
     public function postLogin(LoginRequest $request){
         $a = User::where('email',$request->email)->first();
-        $role = $a->role;
+        // dd($a);
+        if ($a != null) {
+            $role = $a->role;
+        }
+        else{
+            return redirect()->back()->with('error','Tài khoản không tồn tại!');
+        }
+
         $credentials = $request->only('email', 'password');
         if ($role == "1") {
             if(Auth::attempt($credentials)){

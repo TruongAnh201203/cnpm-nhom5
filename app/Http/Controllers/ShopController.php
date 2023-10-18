@@ -85,10 +85,22 @@ class ShopController extends Controller
     {
         $brand = $request['search'];
         $products = Product::where('nameProduct','LIKE', "%{$brand}%")->OrderBy('created_at','DESC')->paginate(9);
+        $price['max'] = 0;
+        foreach ($products->all() as $value) {
+            if ($value->priceProduct > $price['max']) {
+                $price['max']=$value->priceProduct;
+            }
+        }
+        $price['min'] = $price['max'];
+        foreach ($products->all() as $value) {
+            if ($value->priceProduct < $price['min']) {
+                $price['min']=$value->priceProduct;
+            }
+        }
         $categories = Brand::OrderBy('brand')->limit(5)->get();
         $specials =Product::inRandomOrder()->limit(2)->get();
         $brands = Brand::orderBy('brand')->get();
-        return view('Shop.list', compact('brands', 'products', 'brand', 'categories', 'specials'));
+        return view('Shop.list', compact('brands', 'products', 'brand', 'categories', 'specials', 'price'));
     }
 
     public function myAccount()
